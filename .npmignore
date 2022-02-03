@@ -1,0 +1,7 @@
+.git
+node_modules
+test.sh
+tsconfig.json
+db.csv
+src
+test
