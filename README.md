@@ -33,10 +33,11 @@ Or if you want to download the repo
 
 Use the free CI github minutes to schedule this script every day and send notifications to an slack channel
 
-For that, *fork this project as a private repo on your github account*, change the csv database file db.csv with your
-data, change the notification messages if you want and add the required secrets to send notifications.
+For that, *fork this project as a private repo on your github account*, or *clone the repo and upload it on your name*, 
+change the csv database file db.csv with your data, activate the workflows (disabled by default on the forks) and add the 
+required secrets to send Slack notifications.
 
-You can also fire it manually by clicking the run workflow button:
+You can change the schedule when the event fires on the workflow file. You can also fire it manually by clicking the run workflow button:
 ![image](https://user-images.githubusercontent.com/1942073/152421450-f342d5d8-f4aa-4c7e-85aa-927f84821d8d.png)
 
 ### Set up slack notifications
