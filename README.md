@@ -10,7 +10,7 @@ A toy to make use of your *free usage quota* on Github Actions to send birthday 
 
 ![image](https://user-images.githubusercontent.com/1942073/152436891-fd79bf85-2424-4eea-baed-d1e1c28f6dc4.png)
 
-* Fork this repo and schedule the script on Github CI to run every day at a specific time. For free.
+* Fork this repo and schedule the script on Github CI to run every day at a specific time. For free[1]
 * Slack notifications
 
 ## How it works
@@ -54,3 +54,5 @@ On your forked repo, add the SLACK_TOKEN (a long string) and SLACK_CONVERSATION_
 ### Set up email notifications
 
 Not yet.
+
+[1]. Github offers at least 2000 free minutes per month to all their users. This script runs in less than 30 seconds.
