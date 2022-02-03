@@ -1,8 +1,13 @@
 # Congratulate: Send birthday greetings from github CI
 
+<p align="center">
+  <a href="https://npmjs.com/package/congratulate"><img src="https://img.shields.io/npm/v/congratulate.svg" alt="npm package"></a>
+</p>
+
 ## What it is?
 
 A toy to make use of your *free usage quota* on Github Actions to send birthday notifications to Slack or by Email.
+
 ![image](https://user-images.githubusercontent.com/1942073/152436891-fd79bf85-2424-4eea-baed-d1e1c28f6dc4.png)
 
 * Fork this repo and schedule the script on Github CI to run every day at a specific time. For free.
