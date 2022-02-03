@@ -1,31 +1,50 @@
-# Send birthday greetings
+# Congratulate: Send birthday greetings from github CI
 
-Parse a CSV database, find birthdays, send notifications.
+## What it is?
 
-Supports: 
+A toy to make use of your *free usage quota* on Github Actions to send birthday notifications to Slack or by Email.
+![image](https://user-images.githubusercontent.com/1942073/152436891-fd79bf85-2424-4eea-baed-d1e1c28f6dc4.png)
+
+* Fork this repo and schedule the script on Github CI to run every day at a specific time. For free.
 * Slack notifications
 
-How to use
+## How it works
+* GitHub Actions is used as a scheduler
+
+* Every day the script runs and sends a notification if a birthday was found on the database.  
+
+## How to use locally
+
+You don't need to fork the repo, you can also run it locally. Create a CSV database with your contacts similar to the [example
+database](https://raw.githubusercontent.com/dgrabla/congratulate/main/db.csv). Then run it with npx.
 ```
+> npx congratulate --dbpath db.csv --slack-token XXX-YYY-ZZZ --slack-conversation-id 12346780
+```
+
+Or if you want to download the repo
+```
+> git clone @dgrabla/congratulate
 > npm install
+> npm run help
 > npm run demo
 ```
 
-## Github workflows
+## How to configure the Github workflow
 
-Use the free CI github minutes you are not using to run this toy. 
+Use the free CI github minutes to schedule this script every day and send notifications to an slack channel
 
-Use github CI to run this every day to 
-parse the csv database and send the notifications if a birthday is found. 
-
-For that, fork this project on your account, change the csv database file db.csv with your
+For that, *fork this project as a private repo on your github account*, change the csv database file db.csv with your
 data, change the notification messages if you want and add the required secrets to send notifications.
 
-### Slack notifications
+You can also fire it manually by clicking the run workflow button:
+![image](https://user-images.githubusercontent.com/1942073/152421450-f342d5d8-f4aa-4c7e-85aa-927f84821d8d.png)
 
-On github, add as secre
+### Set up slack notifications
 
-## Alternative CLI use
-```
-> npx @dgrabla/birthday-greetings 
-```
+On your forked repo, add the SLACK_TOKEN (a long string) and SLACK_CONVERSATION_ID (the channel where you want to send the notification) secrets. You can generate tokens in [this page](https://slack.com/help/articles/215770388-Create-and-regenerate-API-tokens)
+
+![image](https://user-images.githubusercontent.com/1942073/152424316-2e9b4db4-99c1-4444-9177-f8a8f15ca726.png)
+
+### Set up email notifications
+
+Not yet.

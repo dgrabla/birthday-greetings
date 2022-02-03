@@ -1,11 +1,15 @@
 {
-  "name": "@dgrabla/birthday-greetings",
+  "name": "congratulate",
   "version": "1.0.0",
   "description": "Send birthday greetings",
   "main": "dist/index.js",
-  "bin": "dist/bin.js"
+  "bin": "dist/bin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"You must be kidding\"",
+    "dev": "npx tsc -w",
+    "build": "npx tsc",
+    "demo": "node dist/bin.js",
+    "help": "node dist/bin.js --help"
   },
   "author": "David Grajal <dgrabla@gmail.com> (https://www.davidgrajal.com/)",
   "license": "GPL-3.0",

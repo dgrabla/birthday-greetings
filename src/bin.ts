@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 import { cac } from 'cac'
 import run from './index';
 import {Options} from './types';
 
-const cli = cac('greet');
+const cli = cac('congratulate');
 
 cli
 .command('', 'Run, identify people to congratulate and send a notification using the provider')

@@ -14,10 +14,15 @@ const decomposeDate = (date: Date): DecomposedDate => {
 const today:DecomposedDate = decomposeDate(new Date());
 
 const getDbData = async (dbPath:string): Promise<DbItems[]> => {
-  const json = await csv().fromFile(dbPath);
-  return json;
+  try {
+    const json = await csv().fromFile(dbPath);
+    return json;
+  }
+  catch(err:any) {
+    console.log(`Error reading the database: ${err.message}. Check out the file exists and it has the headers of the reference db.csv`)
+    process.exit();
+  }
 }
-
 
 const processEntries = (people: DbItems[]): Person[] => {
   return people.map((person) => {
@@ -52,8 +57,7 @@ const notify = async (people: Person[], {slackToken, slackConversationId}:any): 
   return people.forEach(async person => {
     if (person.provider === 'slack') {
       if(!slackToken || !slackConversationId) {
-        console.log(`Could not submit the notify to slack because you didn't pass the slackToken/slackConversationId. Check the --help command.`)
-        return;
+        throw(`Could not submit the notify to slack because you didn't pass the slackToken/slackConversationId. Check the --help command.`)
       }
       const web = new WebClient(slackToken);
       try {
@@ -61,13 +65,14 @@ const notify = async (people: Person[], {slackToken, slackConversationId}:any): 
           text: `Hey ${person.first_name} ${person.last_name}, Happy ${person.age} birthday! :tada: :cake: we wish you a great day!`,
           channel: slackConversationId,
         });
-        console.log(`Successfully send message ${result.ts} in slack conversation ${conversationId}`);
+        console.log(`Successfully sent notification for ${person.first_name} ${person.last_name} / ${result.ts} in slack conversation ${slackConversationId}`);
       }
-      catch(err) {
+      catch(err:any) {
         console.log(`Slack.postMessage returned an error: ${err.message}. This will happen if your slack token and slack conversationId are not valid.`)
+      }
     }
     if (person.provider === 'email') {
-      console.log ('SMTP notification is not implemented yet');
+      console.log ('Sorry, SMTP provider is not implemented yet');
     }
   })
 }
